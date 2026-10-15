@@ -1,10 +1,347 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>USD Montecarlo</title>
-    </head>
-    <body>
-        <h1>Prima prova</h1>
-        <h1>Seconda prova</h1>
-    </body>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>U.S.D. Montecarlo | Squadra ciclistica</title>
+  <meta name="description" content="Sito ufficiale della U.S.D. Montecarlo: squadra ciclistica. Scopri la nostra storia, gli atleti, il calendario gare, i risultati e gli sponsor.">
+  <meta name="theme-color" content="#d4252b">
+  <meta property="og:title" content="U.S.D. Montecarlo | Squadra ciclistica">
+  <meta property="og:description" content="Passione, fatica e strada. Il sito ufficiale della U.S.D. Montecarlo.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="header">
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="U.S.D. Montecarlo - Home">
+        <img src="logo.png" alt="Logo U.S.D. Montecarlo" width="46" height="46">
+        <span>U.S.D. <strong>Montecarlo</strong></span>
+      </a>
+
+      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="menu" class="menu" aria-label="Navigazione principale">
+        <a href="#home" class="active">Home</a>
+        <a href="#chi-siamo">Chi siamo</a>
+        <a href="#atleti">Atleti</a>
+        <a href="#calendario">Calendario</a>
+        <a href="#sponsor">Sponsor</a>
+        <a href="#galleria">Galleria</a>
+        <a href="#contatti" class="btn-nav">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HOME ============ -->
+    <section id="home" class="hero">
+      <svg class="hero-wheel" viewBox="0 0 400 400" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="3">
+          <circle cx="200" cy="200" r="190"/>
+          <circle cx="200" cy="200" r="170" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="16"/>
+          <path d="M200 10V184M200 216V390M10 200H184M216 200H390M65 65L189 189M211 211L335 335M335 65L211 189M189 211L65 335" stroke-width="2"/>
+          <path d="M200 10L120 190M200 10L280 190M200 390L120 210M200 390L280 210M10 200L190 120M10 200L190 280M390 200L210 120M390 200L210 280" stroke-width="1.2" opacity=".6"/>
+        </g>
+      </svg>
+
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow eyebrow-light">Società ciclistica dilettantistica</p>
+          <h1>Passione, fatica<br>e <span>strada</span>.</h1>
+          <p class="lead">Siamo la U.S.D. Montecarlo: una squadra che vive di salite, volate e amicizia. Dai più piccoli ai veterani, pedaliamo insieme sotto gli stessi colori.</p>
+          <div class="hero-cta">
+            <a href="#calendario" class="btn btn-yellow">Prossime gare</a>
+            <a href="#chi-siamo" class="btn btn-ghost">Scopri la squadra</a>
+          </div>
+
+          <ul class="stats">
+            <li><strong data-count="30" data-suffix="+">0</strong><span>Atleti</span></li>
+            <li><strong data-count="25" data-suffix="+">0</strong><span>Gare l'anno</span></li>
+            <li><strong data-count="20" data-suffix="+">0</strong><span>Anni di storia</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-logo">
+          <div class="logo-glow"></div>
+          <img src="logo.png" alt="Stemma della U.S.D. Montecarlo">
+        </div>
+      </div>
+
+      <a href="#chi-siamo" class="scroll-down" aria-label="Scorri verso il basso"><span></span></a>
+
+      <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,80 C240,10 420,120 720,70 C1000,20 1200,110 1440,50 L1440,120 L0,120 Z" fill="#ffffff"/>
+      </svg>
+    </section>
+
+    <!-- ============ CHI SIAMO ============ -->
+    <section id="chi-siamo" class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="eyebrow">Chi siamo</p>
+            <h2>Una squadra nata dalla <span>passione</span> per la bicicletta</h2>
+            <p>La U.S.D. Montecarlo è un'unione sportiva dilettantistica che porta il nome e i colori del proprio paese su tutte le strade. Crediamo che il ciclismo sia prima di tutto una scuola di vita: sacrificio, rispetto, spirito di gruppo.</p>
+            <p>Accompagniamo i ragazzi nella crescita sportiva e personale, e offriamo agli amatori l'occasione di vivere il ciclismo in compagnia, sempre con il sorriso.</p>
+            <a href="#contatti" class="btn btn-red">Entra nella squadra</a>
+          </div>
+
+          <div class="values">
+            <article class="card value reveal">
+              <div class="icon">🚴</div>
+              <h3>Sport per tutti</h3>
+              <p>Dai giovanissimi agli amatori: ognuno ha il suo posto in gruppo.</p>
+            </article>
+            <article class="card value reveal">
+              <div class="icon">🤝</div>
+              <h3>Spirito di squadra</h3>
+              <p>Si vince e si perde insieme. Il gruppo viene prima del singolo.</p>
+            </article>
+            <article class="card value reveal">
+              <div class="icon">⛰️</div>
+              <h3>Il nostro territorio</h3>
+              <p>Rappresentiamo con orgoglio i colori e le strade di Montecarlo.</p>
+            </article>
+            <article class="card value reveal">
+              <div class="icon">🏆</div>
+              <h3>Crescita e rispetto</h3>
+              <p>Allenamento, lealtà e fair play, dentro e fuori dalla gara.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ATLETI ============ -->
+    <section id="atleti" class="section section-grey">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Atleti</p>
+          <h2>Il nostro <span>gruppo</span></h2>
+          <p>I ragazzi e le ragazze che ogni weekend portano i nostri colori al traguardo.</p>
+        </header>
+
+        <div class="chips reveal" id="athlete-filters" role="tablist" aria-label="Filtra per categoria">
+          <button class="chip active" data-filter="all">Tutti</button>
+          <button class="chip" data-filter="Giovanili">Giovanili</button>
+          <button class="chip" data-filter="Juniores">Juniores</button>
+          <button class="chip" data-filter="Élite / Amatori">Élite / Amatori</button>
+        </div>
+
+        <div class="athletes-grid" id="athletes-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ CALENDARIO E RISULTATI ============ -->
+    <section id="calendario" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Calendario e risultati</p>
+          <h2>In gara, <span>settimana dopo settimana</span></h2>
+          <p>Tutti gli appuntamenti della stagione e i risultati dei nostri atleti.</p>
+        </header>
+
+        <div class="tabs reveal" role="tablist">
+          <button class="tab active" role="tab" data-tab="calendar" aria-selected="true">📅 Prossime gare</button>
+          <button class="tab" role="tab" data-tab="results" aria-selected="false">🏁 Risultati</button>
+        </div>
+
+        <div class="tab-panel active" id="panel-calendar">
+          <div class="event-list" id="event-list"></div>
+        </div>
+
+        <div class="tab-panel" id="panel-results">
+          <div class="table-wrap">
+            <table class="results-table">
+              <thead>
+                <tr><th>Data</th><th>Gara</th><th>Atleta</th><th>Piazzamento</th></tr>
+              </thead>
+              <tbody id="results-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPONSOR ============ -->
+    <section id="sponsor" class="section section-dark">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow eyebrow-light">Sponsor</p>
+          <h2>Chi ci <span>sostiene</span></h2>
+          <p>Senza i nostri partner non potremmo pedalare così lontano. Grazie di cuore!</p>
+        </header>
+
+        <div class="sponsor-grid">
+          <!-- Sostituisci ogni "Sponsor" con <img src="sponsor/nome.png" alt="Nome sponsor"> -->
+          <a href="#" class="sponsor-box main reveal"><span>Main Sponsor</span></a>
+          <a href="#" class="sponsor-box main reveal"><span>Main Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+          <a href="#" class="sponsor-box reveal"><span>Sponsor</span></a>
+        </div>
+
+        <div class="sponsor-cta reveal">
+          <p>Vuoi far correre il tuo marchio con noi?</p>
+          <a href="#contatti" class="btn btn-yellow">Diventa sponsor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERIA ============ -->
+    <section id="galleria" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Galleria</p>
+          <h2>Immagini dalla <span>strada</span></h2>
+          <p>Momenti di gara, allenamenti e feste in maglia Montecarlo.</p>
+        </header>
+
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATTI ============ -->
+    <section id="contatti" class="section section-grey">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Contatti</p>
+          <h2>Mettiti in <span>contatto</span></h2>
+          <p>Vuoi provare con noi, sostenerci o chiedere informazioni? Scrivici!</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="info-item">
+              <div class="icon">📍</div>
+              <div><h3>Sede</h3><p>Via Esempio 1, Montecarlo (LU)</p></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">✉️</div>
+              <div><h3>Email</h3><p><a href="mailto:info@usdmontecarlo.it">info@usdmontecarlo.it</a></p></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">📞</div>
+              <div><h3>Telefono</h3><p><a href="tel:+390000000000">+39 000 000 0000</a></p></div>
+            </div>
+            <div class="info-item">
+              <div class="icon">🕘</div>
+              <div><h3>Ritrovo uscite</h3><p>Domenica mattina, ore 8:30</p></div>
+            </div>
+
+            <div class="socials">
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+          </div>
+
+          <form class="contact-form card reveal" id="contact-form" novalidate>
+            <div class="field">
+              <label for="name">Nome e cognome</label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Mario Rossi">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="mario@esempio.it">
+            </div>
+            <div class="field">
+              <label for="subject">Motivo del contatto</label>
+              <select id="subject" name="subject">
+                <option>Informazioni generali</option>
+                <option>Voglio iscrivermi / provare</option>
+                <option>Sponsorizzazioni</option>
+                <option>Altro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Messaggio</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+            </div>
+            <label class="check">
+              <input type="checkbox" id="privacy" required>
+              <span>Acconsento al trattamento dei dati personali per rispondere alla mia richiesta.</span>
+            </label>
+            <button type="submit" class="btn btn-red btn-full">Invia messaggio</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand">
+          <img src="logo.png" alt="Logo U.S.D. Montecarlo" width="56" height="56">
+          <span>U.S.D. <strong>Montecarlo</strong></span>
+        </a>
+        <p>Unione Sportiva Dilettantistica di ciclismo. Passione, sacrificio e spirito di squadra dal cuore di Montecarlo.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+        </div>
+      </div>
+
+      <div class="footer-sections">
+        <h4>Esplora il sito</h4>
+        <ul>
+          <li><a href="#home"><strong>Home</strong><span>La presentazione della squadra e le novità in evidenza.</span></a></li>
+          <li><a href="#chi-siamo"><strong>Chi siamo</strong><span>La nostra storia, i valori e lo spirito del gruppo.</span></a></li>
+          <li><a href="#atleti"><strong>Atleti</strong><span>Gli atleti divisi per categoria.</span></a></li>
+          <li><a href="#calendario"><strong>Calendario e risultati</strong><span>Le prossime gare e i piazzamenti ottenuti.</span></a></li>
+          <li><a href="#sponsor"><strong>Sponsor</strong><span>I partner che sostengono la squadra.</span></a></li>
+          <li><a href="#galleria"><strong>Galleria</strong><span>Foto di gare, allenamenti ed eventi.</span></a></li>
+          <li><a href="#contatti"><strong>Contatti</strong><span>Sede, recapiti e modulo per scriverci.</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contatti</h4>
+        <p>Via Esempio 1<br>Montecarlo (LU)</p>
+        <p><a href="mailto:info@usdmontecarlo.it">info@usdmontecarlo.it</a></p>
+        <p><a href="tel:+390000000000">+39 000 000 0000</a></p>
+        <p class="small">C.F. / P.IVA 00000000000</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© <span id="year"></span> U.S.D. Montecarlo. Tutti i diritti riservati.</p>
+        <a href="#home" class="to-top">Torna su ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox galleria -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lb-close" aria-label="Chiudi">×</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Foto precedente">‹</button>
+    <figure id="lb-figure"></figure>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Foto successiva">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
