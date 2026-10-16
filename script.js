@@ -56,7 +56,7 @@ const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
 //  1. registrati su https://www.goatcounter.com e scegli un "codice" (es. 'usdmontecarlo')
 //  2. in Settings, spunta "Allow adding visitor counts on your website"
 //  3. scrivi qui sotto il codice. Finché resta vuoto, il contatore non viene mostrato.
-const GOATCOUNTER_CODE = '';
+const GOATCOUNTER_CODE = 'usdmontecarlo';
 
 /* ---------------- UTILITÀ ---------------- */
 
