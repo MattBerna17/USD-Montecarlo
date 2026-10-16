@@ -8,21 +8,16 @@
 // Foto di gruppo mostrata sopra gli atleti.
 // Metti il file in img/squadra.jpg (o cambia il percorso). Se "src" è vuoto compare un segnaposto.
 const TEAM_PHOTO = {
-  src: '',                       // es. 'img/squadra.jpg'
+  src: 'img/squadra.JPG',                       // es. 'img/squadra.jpg'
   alt: 'Foto di gruppo della U.S.D. Montecarlo',
   caption: 'La U.S.D. Montecarlo al completo',
 };
 
 // Atleti: "photo" è opzionale (es. 'img/atleti/rossi.jpg'). Senza foto compare il numero di maglia.
 const ATHLETES = [
-  { name: 'Nome Cognome', number: 1,  category: 'Élite / Amatori', role: 'Passista' },
-  { name: 'Nome Cognome', number: 2,  category: 'Élite / Amatori', role: 'Scalatore' },
-  { name: 'Nome Cognome', number: 3,  category: 'Élite / Amatori', role: 'Velocista' },
-  { name: 'Nome Cognome', number: 7,  category: 'Juniores',        role: 'Passista' },
-  { name: 'Nome Cognome', number: 8,  category: 'Juniores',        role: 'Scalatore' },
-  { name: 'Nome Cognome', number: 11, category: 'Juniores',        role: 'Velocista' },
-  { name: 'Nome Cognome', number: 21, category: 'Giovanili',       role: 'Esordiente' },
-  { name: 'Nome Cognome', number: 22, category: 'Giovanili',       role: 'Allievo' },
+  { name: 'Pietro Del Nista', number: "G1",  category: 'Giovanissimi', photo: "img/atleti/del_nista_pietro.JPG" },
+  // { name: 'Nome Cognome', number: 2,  category: 'Élite / Amatori', role: 'Scalatore', photo: "img/atleti/" },
+  // { name: 'Nome Cognome', number: 3,  category: 'Élite / Amatori', role: 'Velocista', photo: "img/atleti/" },
 ];
 
 // Primi posti: "photo" è opzionale (es. 'img/vittorie/gara1.jpg'). Senza foto compare un segnaposto.
@@ -36,14 +31,14 @@ const WINS = [
 // Galleria: "src" opzionale (es. 'img/galleria/foto1.jpg'). Senza src compare un segnaposto.
 // "size" opzionale: 'tall' (alta) oppure 'wide' (larga).
 const GALLERY = [
-  { src: '', caption: 'Partenza di gara',       size: 'wide' },
-  { src: '', caption: 'In salita' },
-  { src: '', caption: 'Il gruppo in allenamento', size: 'tall' },
-  { src: '', caption: 'Premiazione' },
-  { src: '', caption: 'Volata finale' },
-  { src: '', caption: 'Festa di squadra',        size: 'wide' },
-  { src: '', caption: 'I più piccoli' },
-  { src: '', caption: 'Uscita domenicale' },
+  { src: 'img/galleria/foto1.JPG', caption: 'In salita', size: 'tall' },
+  { src: 'img/galleria/foto2.JPG', caption: 'Durante il passaggio della borraccia' },
+  { src: 'img/galleria/foto4.JPG', caption: 'Durante l\'allenamento' },
+  { src: 'img/galleria/foto3.JPG', caption: 'Volata finale', size: "tall" },
+  // { src: '', caption: 'Volata finale' },
+  // { src: '', caption: 'Festa di squadra',        size: 'wide' },
+  // { src: '', caption: 'I più piccoli' },
+  // { src: '', caption: 'Uscita domenicale' },
 ];
 
 // Modulo contatti: i messaggi arrivano a questo indirizzo email.
