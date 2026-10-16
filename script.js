@@ -5,6 +5,14 @@
 
 /* ---------------- DATI MODIFICABILI ---------------- */
 
+// Foto di gruppo mostrata sopra gli atleti.
+// Metti il file in img/squadra.jpg (o cambia il percorso). Se "src" è vuoto compare un segnaposto.
+const TEAM_PHOTO = {
+  src: '',                       // es. 'img/squadra.jpg'
+  alt: 'Foto di gruppo della U.S.D. Montecarlo',
+  caption: 'La U.S.D. Montecarlo al completo',
+};
+
 // Atleti: "photo" è opzionale (es. 'img/atleti/rossi.jpg'). Senza foto compare il numero di maglia.
 const ATHLETES = [
   { name: 'Nome Cognome', number: 1,  category: 'Élite / Amatori', role: 'Passista' },
@@ -17,20 +25,12 @@ const ATHLETES = [
   { name: 'Nome Cognome', number: 22, category: 'Giovanili',       role: 'Allievo' },
 ];
 
-// Calendario gare (data formato AAAA-MM-GG)
-const EVENTS = [
-  { date: '2027-02-21', title: 'Gara di esempio 1', place: 'Località, Provincia', category: 'Élite / Amatori' },
-  { date: '2027-03-07', title: 'Gara di esempio 2', place: 'Località, Provincia', category: 'Juniores' },
-  { date: '2027-03-21', title: 'Gara di esempio 3', place: 'Località, Provincia', category: 'Giovanili' },
-  { date: '2027-04-04', title: 'Gara di esempio 4', place: 'Località, Provincia', category: 'Tutte le categorie' },
-];
-
-// Risultati (pos = piazzamento numerico)
-const RESULTS = [
-  { date: '2026-09-27', race: 'Gara di esempio A', athlete: 'Nome Cognome', pos: 1 },
-  { date: '2026-09-13', race: 'Gara di esempio B', athlete: 'Nome Cognome', pos: 2 },
-  { date: '2026-08-30', race: 'Gara di esempio C', athlete: 'Nome Cognome', pos: 3 },
-  { date: '2026-08-16', race: 'Gara di esempio D', athlete: 'Nome Cognome', pos: 5 },
+// Primi posti: "photo" è opzionale (es. 'img/vittorie/gara1.jpg'). Senza foto compare un segnaposto.
+// Per aggiungerne una basta copiare una riga. Data nel formato AAAA-MM-GG.
+const WINS = [
+  { race: 'Nome della gara', athlete: 'Nome Cognome', date: '2026-09-27', place: 'Località', photo: '' },
+  { race: 'Nome della gara', athlete: 'Nome Cognome', date: '2026-06-14', place: 'Località', photo: '' },
+  { race: 'Nome della gara', athlete: 'Nome Cognome', date: '2025-10-05', place: 'Località', photo: '' },
 ];
 
 // Galleria: "src" opzionale (es. 'img/galleria/foto1.jpg'). Senza src compare un segnaposto.
@@ -46,10 +46,11 @@ const GALLERY = [
   { src: '', caption: 'Uscita domenicale' },
 ];
 
-// Modulo contatti: crea un modulo gratuito su https://formspree.io (o simili),
-// poi incolla qui l'indirizzo. Finché resta così, il pulsante apre il programma email.
-const FORM_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+// Modulo contatti: i messaggi arrivano a questo indirizzo email.
+// Il servizio usato è FormSubmit (gratuito, senza registrazione): al PRIMO invio riceverai
+// una email di attivazione a questo indirizzo, clicca il link di conferma e da lì in poi funziona.
 const CONTACT_EMAIL = 'info@usdmontecarlo.it';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
 
 /* ---------------- UTILITÀ ---------------- */
 
@@ -92,6 +93,16 @@ const spy = new IntersectionObserver((entries) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 sections.forEach((s) => spy.observe(s));
 
+/* ---------------- FOTO DI GRUPPO ---------------- */
+
+$('#team-photo').innerHTML = `
+  <div class="frame">
+    ${TEAM_PHOTO.src
+      ? `<img src="${esc(TEAM_PHOTO.src)}" alt="${esc(TEAM_PHOTO.alt)}" loading="lazy">`
+      : '<div class="ph"><div><span>📸</span>Qui la foto di gruppo</div></div>'}
+  </div>
+  <figcaption>${esc(TEAM_PHOTO.caption)}</figcaption>`;
+
 /* ---------------- ATLETI ---------------- */
 
 const athletesGrid = $('#athletes-grid');
@@ -119,49 +130,21 @@ $('#athlete-filters').addEventListener('click', (e) => {
   renderAthletes(btn.dataset.filter);
 });
 
-/* ---------------- CALENDARIO E RISULTATI ---------------- */
+/* ---------------- RISULTATI (PRIMI POSTI) ---------------- */
 
-const today = new Date(); today.setHours(0, 0, 0, 0);
-
-function renderEvents() {
-  const upcoming = EVENTS
-    .filter((ev) => parseDate(ev.date) >= today)
-    .sort((a, b) => parseDate(a.date) - parseDate(b.date));
-
-  $('#event-list').innerHTML = upcoming.length
-    ? upcoming.map((ev) => {
-        const d = parseDate(ev.date);
-        return `
-        <article class="card event">
-          <div class="event-date"><strong>${d.getDate()}</strong><span>${MONTHS[d.getMonth()]} ${d.getFullYear()}</span></div>
-          <div class="event-info">
-            <h3>${esc(ev.title)}</h3>
-            <p>📍 ${esc(ev.place)}</p>
-          </div>
-          <span class="tag">${esc(ev.category)}</span>
-        </article>`;
-      }).join('')
-    : '<p style="text-align:center;color:var(--grey)">Nessuna gara in programma al momento. Torna presto!</p>';
-}
-
-function renderResults() {
-  const rows = [...RESULTS].sort((a, b) => parseDate(b.date) - parseDate(a.date));
-  $('#results-body').innerHTML = rows.map((r) => `
-    <tr>
-      <td>${fmtShort(r.date)}</td>
-      <td><strong>${esc(r.race)}</strong></td>
-      <td>${esc(r.athlete)}</td>
-      <td><span class="pos ${r.pos <= 3 ? 'p' + r.pos : ''}">${esc(r.pos)}°</span></td>
-    </tr>`).join('');
-}
-renderEvents();
-renderResults();
-
-$$('.tab').forEach((tab) => tab.addEventListener('click', () => {
-  $$('.tab').forEach((t) => { t.classList.toggle('active', t === tab); t.setAttribute('aria-selected', t === tab); });
-  $('#panel-calendar').classList.toggle('active', tab.dataset.tab === 'calendar');
-  $('#panel-results').classList.toggle('active', tab.dataset.tab === 'results');
-}));
+const sortedWins = [...WINS].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+$('#wins-grid').innerHTML = sortedWins.map((w) => `
+  <article class="card win reveal">
+    <div class="win-photo">
+      <span class="win-badge">1°</span>
+      ${w.photo ? `<img src="${esc(w.photo)}" alt="${esc(w.race)} - ${esc(w.athlete)}" loading="lazy">` : '<span aria-hidden="true">🏆</span>'}
+    </div>
+    <div class="win-body">
+      <h3>${esc(w.race)}</h3>
+      <p>${esc(w.athlete)}</p>
+      <p class="win-meta">📍 ${esc(w.place)} · ${fmtShort(w.date)}</p>
+    </div>
+  </article>`).join('');
 
 /* ---------------- GALLERIA + LIGHTBOX ---------------- */
 
@@ -211,10 +194,24 @@ document.addEventListener('keydown', (e) => {
 
 const form = $('#contact-form');
 const statusEl = $('#form-status');
+const submitBtn = $('button[type="submit"]', form);
 
 function setStatus(msg, type) {
   statusEl.textContent = msg;
   statusEl.className = 'form-status ' + (type || '');
+}
+
+// In caso di errore propone di scrivere direttamente via email, con i dati già compilati
+function setErrorWithMailto(name, email, subject, message) {
+  const body = `Nome: ${name}\nEmail: ${email}\nMotivo: ${subject}\n\n${message}`;
+  const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('[Sito] ' + subject)}&body=${encodeURIComponent(body)}`;
+  statusEl.className = 'form-status err';
+  statusEl.textContent = 'Invio non riuscito. Riprova tra poco oppure ';
+  const a = document.createElement('a');
+  a.href = href;
+  a.textContent = 'scrivici con il tuo programma di posta';
+  a.style.textDecoration = 'underline';
+  statusEl.append(a, '.');
 }
 
 form.addEventListener('submit', async (e) => {
@@ -223,6 +220,9 @@ form.addEventListener('submit', async (e) => {
   const email = form.email.value.trim();
   const message = form.message.value.trim();
   const subject = form.subject.value;
+
+  // Campo trappola compilato = è un bot: finge successo senza inviare nulla
+  if (form.website.value) { form.reset(); return setStatus('Messaggio inviato! 🚴', 'ok'); }
 
   // validazione
   $$('.field', form).forEach((f) => f.classList.remove('invalid'));
@@ -233,25 +233,34 @@ form.addEventListener('submit', async (e) => {
   if (!ok) return setStatus('Controlla i campi evidenziati.', 'err');
   if (!$('#privacy').checked) return setStatus('Per inviare devi accettare il trattamento dei dati.', 'err');
 
-  // Se il servizio di invio non è configurato, apre il programma email
-  if (FORM_ENDPOINT.includes('XXXX')) {
-    const body = `Nome: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('[Sito] ' + subject)}&body=${encodeURIComponent(body)}`;
-    return setStatus('Si sta aprendo il tuo programma di posta...', 'ok');
-  }
-
+  submitBtn.disabled = true;
   setStatus('Invio in corso...');
+
   try {
     const res = await fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ name, email, subject, message }),
+      body: JSON.stringify({
+        // campi che arrivano nella email
+        name,
+        email,                       // usato anche come "Rispondi a"
+        motivo: subject,
+        messaggio: message,
+        consenso_privacy: 'Sì',
+        // opzioni del servizio
+        _subject: `[Sito] ${subject} - ${name}`,
+        _template: 'table',
+        _captcha: 'false',
+      }),
     });
-    if (!res.ok) throw new Error();
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !(data.success === true || data.success === 'true')) throw new Error(data.message || 'send failed');
     form.reset();
     setStatus('Messaggio inviato! Ti risponderemo il prima possibile. 🚴', 'ok');
-  } catch {
-    setStatus(`Invio non riuscito. Scrivici a ${CONTACT_EMAIL}.`, 'err');
+  } catch (err) {
+    setErrorWithMailto(name, email, subject, message);
+  } finally {
+    submitBtn.disabled = false;
   }
 });
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>U.S.D. Montecarlo | Squadra ciclistica</title>
-  <meta name="description" content="Sito ufficiale della U.S.D. Montecarlo: squadra ciclistica. Scopri la nostra storia, gli atleti, il calendario gare, i risultati e gli sponsor.">
+  <meta name="description" content="Sito ufficiale della U.S.D. Montecarlo: squadra ciclistica. Scopri la nostra storia, gli atleti, i risultati e gli sponsor.">
   <meta name="theme-color" content="#d4252b">
   <meta property="og:title" content="U.S.D. Montecarlo | Squadra ciclistica">
   <meta property="og:description" content="Passione, fatica e strada. Il sito ufficiale della U.S.D. Montecarlo.">
@@ -36,7 +36,7 @@
         <a href="#home" class="active">Home</a>
         <a href="#chi-siamo">Chi siamo</a>
         <a href="#atleti">Atleti</a>
-        <a href="#calendario">Calendario</a>
+        <a href="#risultati">Risultati</a>
         <a href="#sponsor">Sponsor</a>
         <a href="#galleria">Galleria</a>
         <a href="#contatti" class="btn-nav">Contatti</a>
@@ -64,7 +64,7 @@
           <h1>Passione, fatica<br>e <span>strada</span>.</h1>
           <p class="lead">Siamo la U.S.D. Montecarlo: una squadra che vive di salite, volate e amicizia. Dai più piccoli ai veterani, pedaliamo insieme sotto gli stessi colori.</p>
           <div class="hero-cta">
-            <a href="#calendario" class="btn btn-yellow">Prossime gare</a>
+            <a href="#risultati" class="btn btn-yellow">I nostri successi</a>
             <a href="#chi-siamo" class="btn btn-ghost">Scopri la squadra</a>
           </div>
 
@@ -135,6 +135,11 @@
           <p>I ragazzi e le ragazze che ogni weekend portano i nostri colori al traguardo.</p>
         </header>
 
+        <!-- Foto di gruppo: si configura in script.js (TEAM_PHOTO) -->
+        <figure class="team-photo reveal" id="team-photo"></figure>
+
+        <h3 class="subhead reveal">Conosci gli atleti</h3>
+
         <div class="chips reveal" id="athlete-filters" role="tablist" aria-label="Filtra per categoria">
           <button class="chip active" data-filter="all">Tutti</button>
           <button class="chip" data-filter="Giovanili">Giovanili</button>
@@ -146,34 +151,17 @@
       </div>
     </section>
 
-    <!-- ============ CALENDARIO E RISULTATI ============ -->
-    <section id="calendario" class="section">
+    <!-- ============ RISULTATI ============ -->
+    <section id="risultati" class="section">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">Calendario e risultati</p>
-          <h2>In gara, <span>settimana dopo settimana</span></h2>
-          <p>Tutti gli appuntamenti della stagione e i risultati dei nostri atleti.</p>
+          <p class="eyebrow">Risultati</p>
+          <h2>I nostri <span>successi</span></h2>
+          <p>Alcune delle vittorie che ci hanno resi più orgogliosi.</p>
         </header>
 
-        <div class="tabs reveal" role="tablist">
-          <button class="tab active" role="tab" data-tab="calendar" aria-selected="true">📅 Prossime gare</button>
-          <button class="tab" role="tab" data-tab="results" aria-selected="false">🏁 Risultati</button>
-        </div>
-
-        <div class="tab-panel active" id="panel-calendar">
-          <div class="event-list" id="event-list"></div>
-        </div>
-
-        <div class="tab-panel" id="panel-results">
-          <div class="table-wrap">
-            <table class="results-table">
-              <thead>
-                <tr><th>Data</th><th>Gara</th><th>Atleta</th><th>Piazzamento</th></tr>
-              </thead>
-              <tbody id="results-body"></tbody>
-            </table>
-          </div>
-        </div>
+        <!-- Le vittorie si configurano in script.js (WINS) -->
+        <div class="wins-grid" id="wins-grid"></div>
       </div>
     </section>
 
@@ -247,12 +235,17 @@
             </div>
 
             <div class="socials">
-              <a href="https://www.instagram.com/u.s.d_montecarlo_ciclismo/" aria-label="Instagram">Instagram</a>
+              <a href="https://www.instagram.com/usd.montecarlo/" aria-label="Instagram">Instagram</a>
               <a href="https://www.facebook.com/USDMontecarloCiclismo/?locale=it_IT" aria-label="Facebook">Facebook</a>
             </div>
           </div>
 
           <form class="contact-form card reveal" id="contact-form" novalidate>
+            <!-- Campo trappola anti-spam: deve restare vuoto e nascosto -->
+            <div class="hp" aria-hidden="true">
+              <label for="website">Non compilare questo campo</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="field">
               <label for="name">Nome e cognome</label>
               <input type="text" id="name" name="name" required autocomplete="name" placeholder="Mario Rossi">
@@ -297,8 +290,8 @@
         </a>
         <p>Unione Sportiva Dilettantistica di ciclismo. Passione, sacrificio e spirito di squadra dal cuore di Montecarlo.</p>
         <div class="socials">
-          <a href="https://www.instagram.com/u.s.d_montecarlo_ciclismo/" aria-label="Instagram" aria-label="Instagram">Instagram</a>
-          <a href="href="https://www.facebook.com/USDMontecarloCiclismo/?locale=it_IT" aria-label="Facebook">Facebook</a>
+          <a href="https://www.instagram.com/usd.montecarlo/" aria-label="Instagram">Instagram</a>
+          <a href="https://www.facebook.com/USDMontecarloCiclismo/?locale=it_IT" aria-label="Facebook">Facebook</a>
         </div>
       </div>
 
@@ -308,7 +301,7 @@
           <li><a href="#home"><strong>Home</strong><span>La presentazione della squadra e le novità in evidenza.</span></a></li>
           <li><a href="#chi-siamo"><strong>Chi siamo</strong><span>La nostra storia, i valori e lo spirito del gruppo.</span></a></li>
           <li><a href="#atleti"><strong>Atleti</strong><span>Gli atleti divisi per categoria.</span></a></li>
-          <li><a href="#calendario"><strong>Calendario e risultati</strong><span>Le prossime gare e i piazzamenti ottenuti.</span></a></li>
+          <li><a href="#risultati"><strong>Risultati</strong><span>Le vittorie e i primi posti di cui andiamo fieri.</span></a></li>
           <li><a href="#sponsor"><strong>Sponsor</strong><span>I partner che sostengono la squadra.</span></a></li>
           <li><a href="#galleria"><strong>Galleria</strong><span>Foto di gare, allenamenti ed eventi.</span></a></li>
           <li><a href="#contatti"><strong>Contatti</strong><span>Sede, recapiti e modulo per scriverci.</span></a></li>
