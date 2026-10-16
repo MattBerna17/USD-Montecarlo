@@ -52,6 +52,12 @@ const GALLERY = [
 const CONTACT_EMAIL = 'info@usdmontecarlo.it';
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
 
+// Contatore visite (GoatCounter, gratuito, senza cookie). Come attivarlo:
+//  1. registrati su https://www.goatcounter.com e scegli un "codice" (es. 'usdmontecarlo')
+//  2. in Settings, spunta "Allow adding visitor counts on your website"
+//  3. scrivi qui sotto il codice. Finché resta vuoto, il contatore non viene mostrato.
+const GOATCOUNTER_CODE = '';
+
 /* ---------------- UTILITÀ ---------------- */
 
 const $  = (sel, ctx = document) => ctx.querySelector(sel);
@@ -295,6 +301,30 @@ const countObs = new IntersectionObserver((entries, obs) => {
   });
 }, { threshold: 0.6 });
 counters.forEach((c) => countObs.observe(c));
+
+/* ---------------- CONTATORE VISITE ---------------- */
+
+if (GOATCOUNTER_CODE) {
+  const base = `https://${GOATCOUNTER_CODE}.goatcounter.com`;
+
+  // 1) registra la visita corrente
+  window.goatcounter = Object.assign(window.goatcounter || {}, { endpoint: base + '/count' });
+  const gc = document.createElement('script');
+  gc.async = true;
+  gc.src = 'https://gc.zgo.at/count.js';
+  gc.dataset.goatcounter = base + '/count';
+  document.head.appendChild(gc);
+
+  // 2) legge e mostra il totale (il servizio lo aggiorna con qualche ora di ritardo)
+  fetch(base + '/counter/TOTAL.json', { headers: { Accept: 'application/json' } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error('counter unavailable'))))
+    .then((d) => {
+      if (!d || d.count == null) throw new Error('bad counter data');
+      $('#visitors-count').textContent = d.count;
+      $('#visitors').hidden = false;
+    })
+    .catch(() => { /* se il servizio non risponde o è bloccato, il contatore resta nascosto */ });
+}
 
 /* ---------------- VARIE ---------------- */
 

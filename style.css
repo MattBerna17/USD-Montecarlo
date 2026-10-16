@@ -450,3 +450,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; margin: 0 0 .
 /* ---------- Anti-spam (campo trappola nascosto) ---------- */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .contact-form .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+
+/* ---------- Contatore visite ---------- */
+.visitors { display: inline-flex; align-items: center; gap: 8px; padding: 4px 16px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); color: rgba(255, 255, 255, .8); }
+.visitors[hidden] { display: none; }
+.visitors strong { color: var(--yellow); font-family: var(--font-head); font-size: 1.05rem; letter-spacing: .04em; }
