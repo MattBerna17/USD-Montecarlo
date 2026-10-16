@@ -286,7 +286,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; margin: 0 0 .
 /* Griglia sponsor: riquadri quadrati */
 .sponsor-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   grid-auto-flow: dense;            /* riempie eventuali buchi */
 }
@@ -319,7 +319,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; margin: 0 0 .
 .sponsor-box img {
   position: absolute;
   inset: 18%;
-  width: 64%; height: 64%;
+  width: 80%; height: 80%;
   object-fit: contain;
   filter: brightness(0) invert(1);  /* logo bianco */
   opacity: .6;
