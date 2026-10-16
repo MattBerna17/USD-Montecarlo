@@ -15,7 +15,7 @@ const TEAM_PHOTO = {
 
 // Atleti: "photo" è opzionale (es. 'img/atleti/rossi.jpg'). Senza foto compare il numero di maglia.
 const ATHLETES = [
-  { name: 'Pietro Del Nista', number: "G1",  category: 'Giovanissimi', photo: "img/atleti/del_nista_pietro.JPG" },
+  { name: 'Pietro Del Nista', number: "G1",  category: 'Giovanissimi', photo: "img/atleti/del_nista_pietro.JPG", role: "Passista" },
   // { name: 'Nome Cognome', number: 2,  category: 'Élite / Amatori', role: 'Scalatore', photo: "img/atleti/" },
   // { name: 'Nome Cognome', number: 3,  category: 'Élite / Amatori', role: 'Velocista', photo: "img/atleti/" },
 ];
