@@ -299,19 +299,10 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; margin: 0 0 .
 }
 .sponsor-box.main { grid-column: span 2; min-height: 160px; font-size: 1.2rem; border-color: var(--yellow); color: var(--yellow); }
 .sponsor-box:hover { background: rgba(255, 255, 255, .1); border-color: var(--yellow); color: var(--white); transform: translateY(-4px); }
-/* Loghi sponsor: tutti alla stessa altezza e tutti bianchi, come il resto della sezione scura */
-.sponsor-box img {
-  width: auto;
-  height: auto;
-  max-width: 70%;
-  max-height: 56px;                 /* altezza uniforme per tutti i loghi */
-  object-fit: contain;
-  filter: brightness(0) invert(1);  /* trasforma il logo in bianco */
-  opacity: .6;
-  transition: opacity .25s, transform .25s;
-}
-.sponsor-box.main img { max-height: 80px; }   /* i main sponsor sono più grandi */
-.sponsor-box:hover img { opacity: 1; transform: scale(1.06); }
+.sponsor-box:has(img) { background: #fff; border: 2px solid transparent; }
+.sponsor-box:has(img):hover { background: #fff; border-color: var(--yellow); }
+.sponsor-box img { width: auto; height: auto; max-width: 70%; max-height: 56px; object-fit: contain; filter: none; opacity: 1; }
+.sponsor-box.main img { max-height: 80px; }
 .sponsor-cta { margin-top: 60px; text-align: center; }
 .sponsor-cta p { font-family: var(--font-head); font-size: 1.5rem; text-transform: uppercase; margin: 0 0 18px; }
 
